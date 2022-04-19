@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "Kaynat",
+      "address": "Noida Delhi",
+      "city": "Noida",
+      "state": "Uttar Pradesh",
+      "zipcode": "56789",
+      "phonenumber": "+91-9645608900",
+      "id": 2,
+      "isUpdate": false,
+      "error": {
+        "address": "",
+        "city": "",
+        "state": "",
+        "zipcode": "",
+        "phonenumber": ""
+      },
+      "errorname": "",
+      "errorphonenumber": ""
+    },
+    {
+      "name": "Abbass",
+      "address": "Gaur city",
+      "city": "Mysore",
+      "state": "KARNATAKA",
+      "zipcode": "776655",
+      "phonenumber": "9964560890",
+      "id": 6,
+      "isUpdate": false,
+      "error": {
+        "address": "",
+        "city": "",
+        "state": "",
+        "zipcode": "",
+        "phonenumber": ""
+      }
+    }
+  ]
+}
