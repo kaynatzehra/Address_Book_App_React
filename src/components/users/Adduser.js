@@ -147,7 +147,7 @@ const AddUser = () => {
             <form className="form-head" action="#" onSubmit={onSubmit}>
                 
             <header className="form-header">
-                            <span>PERSON ADDRESS FORM </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span>PERSON ADDRESS FORM </span>
                             <span>
                                 <Link to=''><img className="cancel-img" src={cancelButton} alt="" /></Link>
                             </span>
@@ -173,7 +173,7 @@ const AddUser = () => {
                <div class="label-state">
                         <label class="state" for="state">State</label>
                         <select id="state" name="state" value={user.state} onChange={changeValue}>
-                    <option value="">Select State</option>
+                    <option value="">Select State</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>

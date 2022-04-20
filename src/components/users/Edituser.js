@@ -3,6 +3,7 @@ import logo from '../../Assets/images/logo.png'
 import './Adduser.css';
 import axios from 'axios'
 import { useHistory, useParams } from "react-router-dom";
+import cancelButton from '../../Assets/images/cross.png'
 const AddUser = () => {
   let history = useHistory();
   
@@ -24,6 +25,12 @@ const AddUser = () => {
         errorzipcode:'',
         errorphonenumber:'',
   });
+  const[validation,setvalidaton]=useState({
+    nameerror:false,
+    zipcodeerror:false,
+    phonenumbererror:false,
+
+})
 
   
   const onInputChange =  async event => {
@@ -32,9 +39,12 @@ const AddUser = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
+    if(validation.nameerror==false && validation.zipcodeerror==false&&validation.phonenumbererror==false){
+        console.log('user'+user)
     await axios.put(`http://localhost:3001/users/${id}`, user);
     history.push("/");
-  };
+    }  
+};
 
     const changeValue = (event) => {
         setUser({ ...user, [event.target.name]: event.target.value })
@@ -50,12 +60,20 @@ const AddUser = () => {
                 ...user,
                 errorname : 'Not a valid Name'
             }))
+            setvalidaton((validation)=>({
+                ...validation,
+                nameerror : true
+            }))
         }
         else{
             console.log('else')
             setUser((user)=>({
                 ...user,
                 errorname : ''
+            }))
+            setvalidaton((validation)=>({
+                ...validation,
+                nameerror : false
             }))
         }
     }
@@ -69,6 +87,10 @@ const AddUser = () => {
                 ...user,
                 errorphonenumber : 'Not a valid Number'
             }))
+            setvalidaton((validation)=>({
+                ...validation,
+                nameerror : true
+            }))
         }
         else{
             console.log('else')
@@ -76,11 +98,15 @@ const AddUser = () => {
                 ...user,
                 errorphonenumber : ''
             }))
+            setvalidaton((validation)=>({
+                ...validation,
+                nameerror : false
+            }))
         }
     }
     const zipcode_validation = (event)=>{
         const data = event.target.value;
-        const Regexp = new RegExp("^[0-9]{5}(?:-[0-9]{4})?$");     
+        const Regexp = new RegExp("^[0-9]{6}(?:-[0-9]{4})?$");     
         const test = Regexp.test(data);
         if(!test){
         
@@ -88,12 +114,20 @@ const AddUser = () => {
                 ...user,
                 errorzipcode: 'Enter valid zip-code'
             }))
+            setvalidaton((validation)=>({
+                ...validation,
+                nameerror : true
+            }))
         }
         else{
             console.log('else')
             setUser((user)=>({
                 ...user,
                 errorzipcode : ''
+            }))
+            setvalidaton((validation)=>({
+                ...validation,
+                nameerror : false
             }))
         }
     }
@@ -131,7 +165,12 @@ const AddUser = () => {
         <div className="form-content">
             <form className="form-head" action="#" onSubmit={onSubmit}>
                 
-                <div className="form-header">PERSON ADDRESS FORM</div>
+            <header className="form-header">
+                            <span>PERSON ADDRESS FORM </span>
+                            <span>
+                                <img className="cancel-img" src={cancelButton} alt="" />
+                            </span>
+                        </header>
 
                 <div className="row-content">
                     <label className="label text" htmlFor="name">Full Name</label><br/>
@@ -154,7 +193,7 @@ const AddUser = () => {
                <div class="label-state">
                         <label class="state" for="state">State</label>
                         <select id="state" name="state" value={user.state} onChange={changeValue}>
-                    <option value="">Select State</option>
+                    <option value="">Select State</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>

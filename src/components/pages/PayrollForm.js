@@ -40,10 +40,12 @@ const PayrollForm = () => {
               </h3>
               
               </div><br /><br />
-              <div><Link className="btn" to="/users/add">Add Contact</Link>
-              </div>
+              <div>
+                <Link className="btn" to="/users/add">+Add Contact</Link>
+             
               <div className="length">
-                ADDRESS BOOK<div class="bbb">{users.length}</div>
+                Person Details<div class="bbb">{users.length}</div>
+                </div>
               </div>
              <table class="table border shadow">
           <thead class="thead-dark">
